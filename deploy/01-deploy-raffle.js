@@ -17,12 +17,15 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     );
     const transactionResponse = await vrfCoordinatorV2Mock.createSubscription();
     const transactionReceipt = await transactionResponse.wait(1);
+
     subscriptionId = transactionReceipt.events[0].args.subId;
+
+    // log(subscriptionId);
     await vrfCoordinatorV2Mock.fundSubscription(
       subscriptionId,
       VRF_SUB_FUND_AMOUNT
     );
-    log(transactionReceipt.events[0].args); // todo know
+    // log(transactionReceipt.events[0].args); // todo know
     vrfCoordinatorV2Address = vrfCoordinatorV2Mock.address;
   } else {
     vrfCoordinatorV2Address = networkConfig[chainId]["vrfCoordinatorV2"];
@@ -31,7 +34,8 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
   const entranceFee = networkConfig[chainId]["entranceFee"];
   const gasLane = networkConfig[chainId]["gasLane"];
   const callbackGasLimit = networkConfig[chainId]["callbackGasLimit"];
-  const interval = networkConfig[chainId]["interval"];
+  const interval = networkConfig[chainId]["keepersUpdateInterval"];
+  log(subscriptionId);
   const args = [
     vrfCoordinatorV2Address,
     entranceFee,
@@ -40,6 +44,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     callbackGasLimit,
     interval,
   ];
+  console.log(args);
   const raffle = await deploy("Raffle", {
     from: deployer,
     args,

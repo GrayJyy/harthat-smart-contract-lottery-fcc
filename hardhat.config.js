@@ -28,7 +28,7 @@ module.exports = {
     hardhat: { chainId: 31337, blockConfirmations: 1 },
     sepolia: {
       chainId: 11155111,
-      blockConfirmations: 6,
+      blockConfirmations: 1,
       url: SEPOLIA_RPC_URL,
       accounts: [PRIVATE_KEY],
     },
@@ -42,7 +42,7 @@ module.exports = {
       default: 1,
     },
   },
-  mocha: { timeout: 50000 },
+  mocha: { timeout: 30000 },
   etherscan: {
     apiKey: ETHERSCAN_API_KEY,
     // customChains: [], // uncomment this line if you are getting a TypeError: customChains is not iterable

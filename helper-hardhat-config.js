@@ -6,8 +6,8 @@ const networkConfig = {
     entranceFee: ethers.utils.parseEther("0.01"),
     gasLane:
       "0x474e34a077df58807dbe9c96d3c009b23b3c6d0cce433e59bbf5b34f823bc56c", // 本地环境的gas lane无所谓
-    callbackGasLimit: "500000",
-    interval: "30",
+    callbackGasLimit: "50000",
+    keepersUpdateInterval: "30",
   },
 
   // Price Feed Address, values can be obtained at https://docs.chain.link/docs/reference-contracts
@@ -18,8 +18,8 @@ const networkConfig = {
     gasLane:
       "0x474e34a077df58807dbe9c96d3c009b23b3c6d0cce433e59bbf5b34f823bc56c", // 30 gwei Key Hash on page: https://docs.chain.link/vrf/v2/subscription/supported-networks
     subscriptionId: "0",
-    callbackGasLimit: "500000",
-    interval: "30",
+    callbackGasLimit: "50000",
+    keepersUpdateInterval: "30",
   },
 };
 
