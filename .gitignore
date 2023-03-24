@@ -2,3 +2,4 @@ node_modules
 cashe
 artifacts
 .env
+gas-report.txt

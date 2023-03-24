@@ -9,9 +9,16 @@ const VRF_SUB_FUND_AMOUNT = ethers.utils.parseEther("30");
 module.exports = async ({ getNamedAccounts, deployments }) => {
   const { deploy, log } = deployments;
   const { deployer } = await getNamedAccounts();
+  const a = await getNamedAccounts();
+  const accounts = await ethers.getSigners();
+
   const chainId = network.config.chainId;
   let vrfCoordinatorV2Address, subscriptionId;
   if (developmentChains.includes(network.name)) {
+    log("--------------------------------------accounts");
+    log(accounts);
+    log("--------------------------------------deployer");
+    log(a);
     const vrfCoordinatorV2Mock = await ethers.getContract(
       "VRFCoordinatorV2Mock"
     );
@@ -44,7 +51,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     callbackGasLimit,
     interval,
   ];
-  console.log(args);
+  console.log(args); // help to solve the big number error
   const raffle = await deploy("Raffle", {
     from: deployer,
     args,
