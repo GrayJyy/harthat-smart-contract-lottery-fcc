@@ -1,7 +1,7 @@
 require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-etherscan");
 require("hardhat-deploy");
-// require("solidity-coverage");
+require("solidity-coverage");
 // require("hardhat-gas-reporter");  // 引入gas-reporter因为会访问外部网络，所以单元测试速度很慢，注释即可
 require("hardhat-contract-sizer");
 require("dotenv").config();
@@ -42,7 +42,7 @@ module.exports = {
       default: 1,
     },
   },
-  mocha: { timeout: 800 },
+  mocha: { timeout: 30000 },
   etherscan: {
     apiKey: ETHERSCAN_API_KEY,
     // customChains: [], // uncomment this line if you are getting a TypeError: customChains is not iterable
