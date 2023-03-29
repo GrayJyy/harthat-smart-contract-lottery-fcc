@@ -3,3 +3,4 @@ cashe
 artifacts
 .env
 gas-report.txt
+coverage
