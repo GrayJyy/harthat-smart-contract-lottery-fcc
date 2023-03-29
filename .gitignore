@@ -4,3 +4,4 @@ artifacts
 .env
 gas-report.txt
 coverage
+deployments
